@@ -1,0 +1,37 @@
+name: Rádio MAPIM Live 24/7
+on:
+  workflow_dispatch:  # Permite execução manual
+  schedule:
+    - cron: '0 */6 * * *'  # Executa a cada 6 horas
+
+jobs:
+  live-stream:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v3
+
+    - name: Setup FFmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+
+    - name: Configurar ambiente
+      run: |
+        echo "YOUTUBE_KEY=${{ secrets.YOUTUBE_KEY }}" >> $GITHUB_ENV
+        echo "FACEBOOK_KEY=${{ secrets.FACEBOOK_KEY }}" >> $GITHUB_ENV
+        echo "IMAGE_URL=https://mapimhome.wordpress.com/wp-content/uploads/2025/04/gaitnew.gif" >> $GITHUB_ENV
+        echo "AUDIO_URL=https://stream.zeno.fm/7wbprc3ce4qvv" >> $GITHUB_ENV
+
+    - name: Instalar dependências Python
+      run: |
+        python -m pip install --upgrade pip
+        pip install flask
+
+    - name: Executar transmissão (360 minutos = 6 horas)
+      run: |
+        timeout 360m python stream_optimized.py
+      env:
+        YOUTUBE_KEY: ${{ secrets.YOUTUBE_KEY }}
+        FACEBOOK_KEY: ${{ secrets.FACEBOOK_KEY }}
