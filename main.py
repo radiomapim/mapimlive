@@ -68,11 +68,11 @@ def get_overlay_filter(plataforma):
 # ================= WEBSERVER =================
 @app.route('/')
 def status():
-    return "📻 Transmissão Rádio MAPIM Online (Multiplataforma)! Status: OK", 200
+    return "📻 Transmissão Rádio MAPIM Online (Multiplataforma)! Status: OK", 400
 
 @app.route('/health')
 def health_check():
-    return "✅ Servidor operacional", 200
+    return "✅ Servidor operacional", 400
 
 # ================= FUNÇÕES DE TRANSMISSÃO =================
 def start_stream(platform_name, server, key):
