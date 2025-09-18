@@ -23,7 +23,7 @@ TELEGRAM_KEY = "2177126950:4ucz8KYhQ5GrW7ckhKdPSA"  # Substitua pela sua chave
 IMAGE_URL = "https://mapimhome.wordpress.com/wp-content/uploads/2025/07/vinheta-video-introducao-contagem-regressiva-youtube-1.gif"
 
 # 🔊 URL do áudio da rádio
-AUDIO_URL = "https://stream.zeno.fm/7wbprc3ce4qvv?//;stream.mp3?//;stream.pls?//;stream.m3u"
+AUDIO_URL = "https://servidor7.radiohost.com.br:6676/stream?//;stream.mp3?//;stream.pls?//;stream.m3u"
 
 # ================= CONFIGURAÇÕES DE VIDEO/AUDIO =================
 VIDEO_WIDTH = 1280
